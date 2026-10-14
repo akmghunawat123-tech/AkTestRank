@@ -1,0 +1,6 @@
+{
+  "name": "TestRank: Exam Mock Tests",
+  "description": "Competitive exam mock test app with timed tests, Testbook-style packages, performance analytics, and personalized recommendations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

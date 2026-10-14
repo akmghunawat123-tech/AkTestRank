@@ -1,0 +1,38 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="0.65"
+        android:scaleY="0.65"
+        android:translateX="18.9"
+        android:translateY="18.9">
+        <!-- Clipboard Base -->
+        <path
+            android:fillColor="#E2E8F0"
+            android:pathData="M28,16 H80 A6,6 0,0,1 86,22 V92 A6,6 0,0,1 80,98 H28 A6,6 0,0,1 22,92 V22 A6,6 0,0,1 28,16 Z" />
+        <!-- Top Clip -->
+        <path
+            android:fillColor="#3B82F6"
+            android:pathData="M38,10 H70 A4,4 0,0,1 74,14 V22 H34 V14 A4,4 0,0,1 38,10 Z" />
+        <path
+            android:fillColor="#1D4ED8"
+            android:pathData="M46,8 H62 A2,2 0,0,1 64,10 V14 H44 V10 A2,2 0,0,1 46,8 Z" />
+        <!-- Paper lines -->
+        <path
+            android:fillColor="#94A3B8"
+            android:pathData="M34,32 H74 V36 H34 Z M34,44 H60 V48 H34 Z M34,56 H74 V60 H34 Z M34,68 H54 V72 H34 Z" />
+        <!-- Ranking / Exam Badge Circle -->
+        <path
+            android:fillColor="#F59E0B"
+            android:pathData="M72,70 A14,14 0,1,1 72,70.01 Z" />
+        <path
+            android:fillColor="#FBBF24"
+            android:pathData="M72,70 A11,11 0,1,1 72,70.01 Z" />
+        <!-- Star / Checkmark inside badge -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M72,63 L74,67.5 L79,68 L75.5,71.5 L76.5,76.5 L72,74 L67.5,76.5 L68.5,71.5 L65,68 L70,67.5 Z" />
+    </group>
+</vector>
