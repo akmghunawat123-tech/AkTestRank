@@ -100,42 +100,35 @@ fun TestRankAppRoot(
 
 
 
-    is AppScreen.AdminQuestionStudio -> {
+      is AppScreen.AdminQuestionStudio -> {
       AdminQuestionStudioScreen(
         isAdminUnlocked = isAdminUnlocked,
-        onUnlockAdmin = { pin -> examViewModel.unlockAdmin(pin) },
+        onUnlockAdmin = { pin: String -> examViewModel.unlockAdmin(pin) },
         onLockAdmin = { examViewModel.lockAdmin() },
         categories = categories,
         customQuestions = customQuestions,
         customMockTests = customMockTests,
         managedUsers = managedUsers,
-        onUpdateUserStatus = { userId, status -> examViewModel.updateManagedUserStatus(userId, status) },
-        onToggleUserAccess = { userId, hasAccess -> examViewModel.toggleManagedUserAccess(userId, hasAccess) },
-        onUpdateUserRole = { userId, role -> examViewModel.updateManagedUserRole(userId, role) },
-        onDeleteUser = { userId -> examViewModel.deleteManagedUser(userId) },
-                onCreateUser = { name: String, email: String, phone: String, targetExam: String, pkg: String, status: String ->
+        onUpdateUserStatus = { userId: String, status: String -> examViewModel.updateManagedUserStatus(userId, status) },
+        onToggleUserAccess = { userId: String, hasAccess: Boolean -> examViewModel.toggleManagedUserAccess(userId, hasAccess) },
+        onUpdateUserRole = { userId: String, role: String -> examViewModel.updateManagedUserRole(userId, role) },
+        onDeleteUser = { userId: String -> examViewModel.deleteManagedUser(userId) },
+        onCreateUser = { name: String, email: String, phone: String, targetExam: String, pkg: String, status: String ->
           examViewModel.createManagedUser(name, email, phone, targetExam, pkg, status)
         },
-
         onCreateMockTest = { catId: String, catName: String, pkgTitle: String, testTitle: String, dur: Int, qCount: Int, marks: Int, pos: Double, neg: Double, secs: String, qs: String ->
-
-          examViewModel.createCustomMockTest(
-            categoryId = catId, categoryName = catName, packageTitle = pkgTitle, testTitle = testTitle, durationMinutes = dur, totalQuestions = qCount, totalMarks = marks, positiveMark = pos, negativeMark = neg, sectionsJoined = secs, questionsSerialized = qs
-          )
+          examViewModel.createCustomMockTest(categoryId = catId, categoryName = catName, packageTitle = pkgTitle, testTitle = testTitle, durationMinutes = dur, totalQuestions = qCount, totalMarks = marks, positiveMark = pos, negativeMark = neg, sectionsJoined = secs, questionsSerialized = qs)
         },
         onDeleteMockTest = { testId: String -> examViewModel.deleteCustomMockTest(testId) },
         onSaveQuestion = { sectionId: String, testId: String, questionEn: String, questionHi: String, optionsEn: List<String>, optionsHi: List<String>, correctOptionIndex: Int, explanationEn: String, explanationHi: String, topic: String, difficulty: String ->
-          examViewModel.saveCustomQuestion(
-            sectionId = sectionId, testId = testId, questionEn = questionEn, questionHi = questionHi, optionsEn = optionsEn, optionsHi = optionsHi, correctOptionIndex = correctOptionIndex, explanationEn = explanationEn, explanationHi = explanationHi, topic = topic, difficulty = difficulty
-          )
+          examViewModel.saveCustomQuestion(sectionId = sectionId, testId = testId, questionEn = questionEn, questionHi = questionHi, optionsEn = optionsEn, optionsHi = optionsHi, correctOptionIndex = correctOptionIndex, explanationEn = explanationEn, explanationHi = explanationHi, topic = topic, difficulty = difficulty)
         },
-
-      
         onDeleteQuestion = { questionId: String -> examViewModel.deleteCustomQuestion(questionId) },
         onPlayTest = { testId: String -> examViewModel.navigateTo(AppScreen.InstructionsView(testId)) },
         onBack = { examViewModel.navigateBack() }
       )
     }
+
 
     is AppScreen.CategorySelection -> {
       CategorySelectionScreen(
