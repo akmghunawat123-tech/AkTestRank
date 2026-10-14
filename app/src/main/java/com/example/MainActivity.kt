@@ -87,16 +87,18 @@ fun TestRankAppRoot(
       )
     }
 
-    is AppScreen.SignUpScreen -> {
+                is AppScreen.SignUpScreen -> {
       SignUpScreen(
         userProfile = userProfile,
-        onSaveProfile = { name, email, phone, targetExam, lang, role ->
+        onSaveProfile = { name: String, email: String, phone: String, targetExam: String, lang: String, role: String ->
           examViewModel.saveUserProfile(name, email, phone, targetExam, lang, role)
         },
         onBack = { examViewModel.navigateBack() },
         onAdminClick = { examViewModel.navigateTo(AppScreen.AdminQuestionStudio) }
       )
     }
+
+
 
     is AppScreen.AdminQuestionStudio -> {
       AdminQuestionStudioScreen(
@@ -111,42 +113,23 @@ fun TestRankAppRoot(
         onToggleUserAccess = { userId, hasAccess -> examViewModel.toggleManagedUserAccess(userId, hasAccess) },
         onUpdateUserRole = { userId, role -> examViewModel.updateManagedUserRole(userId, role) },
         onDeleteUser = { userId -> examViewModel.deleteManagedUser(userId) },
-        onCreateUser = { name, email, phone, targetExam, pkg, status ->
+                onCreateUser = { name: String, email: String, phone: String, targetExam: String, pkg: String, status: String ->
           examViewModel.createManagedUser(name, email, phone, targetExam, pkg, status)
         },
-        onCreateMockTest = { catId, catName, pkgTitle, testTitle, dur, qCount, marks, pos, neg, secs, qs ->
+
+        onCreateMockTest = { catId: String, catName: String, pkgTitle: String, testTitle: String, dur: Int, qCount: Int, marks: Int, pos: Float, neg: Float, secs: String, qs: String ->
           examViewModel.createCustomMockTest(
-            categoryId = catId,
-            categoryName = catName,
-            packageTitle = pkgTitle,
-            testTitle = testTitle,
-            durationMinutes = dur,
-            totalQuestions = qCount,
-            totalMarks = marks,
-            positiveMark = pos,
-            negativeMark = neg,
-            sectionsJoined = secs,
-            questionsSerialized = qs
+            categoryId = catId, categoryName = catName, packageTitle = pkgTitle, testTitle = testTitle, durationMinutes = dur, totalQuestions = qCount, totalMarks = marks, positiveMark = pos, negativeMark = neg, sectionsJoined = secs, questionsSerialized = qs
           )
         },
-        onDeleteMockTest = { testId ->
-          examViewModel.deleteCustomMockTest(testId)
-        },
-        onSaveQuestion = { sectionId, testId, questionEn, questionHi, optionsEn, optionsHi, correctOptionIndex, explanationEn, explanationHi, topic, difficulty ->
+        onDeleteMockTest = { testId -> examViewModel.deleteCustomMockTest(testId) },
+        onSaveQuestion = { sectionId: String, testId: String, questionEn: String, questionHi: String, optionsEn: List<String>, optionsHi: List<String>, correctOptionIndex: Int, explanationEn: String, explanationHi: String, topic: String, difficulty: String ->
           examViewModel.saveCustomQuestion(
-            sectionId = sectionId,
-            testId = testId,
-            questionEn = questionEn,
-            questionHi = questionHi,
-            optionsEn = optionsEn,
-            optionsHi = optionsHi,
-            correctOptionIndex = correctOptionIndex,
-            explanationEn = explanationEn,
-            explanationHi = explanationHi,
-            topic = topic,
-            difficulty = difficulty
+            sectionId = sectionId, testId = testId, questionEn = questionEn, questionHi = questionHi, optionsEn = optionsEn, optionsHi = optionsHi, correctOptionIndex = correctOptionIndex, explanationEn = explanationEn, explanationHi = explanationHi, topic = topic, difficulty = difficulty
           )
         },
+
+      
         onDeleteQuestion = { questionId ->
           examViewModel.deleteCustomQuestion(questionId)
         },
