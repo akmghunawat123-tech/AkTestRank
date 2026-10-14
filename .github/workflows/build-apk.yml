@@ -21,15 +21,14 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Remove debug signing config line automatically
-      run: |
-        find . -name "build.gradle.kts" -exec sed -i '/signingConfig = signingConfigs.getByName("debugConfig")/d' {} + || true
+    - name: Remove debug signing config (if any)
+      run: find . -name "build.gradle.kts" -exec sed -i '/signingConfig = signingConfigs.getByName("debugConfig")/d' {} + || true
 
     - name: Build Debug APK
       run: ./gradlew assembleDebug
 
-    - name: Upload APK Artifact
+    - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: AkTestRank-Debug-APK
+        name: AkTestRank-APK
         path: app/build/outputs/apk/debug/app-debug.apk
